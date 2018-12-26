@@ -1,92 +1,101 @@
 package dev.thomaslienbacher.evolution.world;
 
+import dev.thomaslienbacher.evolution.gui.CanvasPanel;
 import dev.thomaslienbacher.evolution.utils.Utils;
 
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class World {
 
     public static final int WIDTH = 40, HEIGHT = 40;
 
-    public int width, height;
-    public ArrayList<Animal> animals;
+    private ArrayList<Robot> robots;
     private byte[][] originalFood;
     private byte[][] food;
-    private int numAnimals;
-    private int currentAnimal;
-    private State state;
+    private int numRobots;
+    private int currentRobot;
+    private boolean genFinished;
 
-    public World(int width, int height) {
-        this.width = width;
-        this.height = height;
-
-        food = new byte[width][height];
-        originalFood = new byte[width][height];
-        animals = new ArrayList<>();
-        state = State.READY;
+    public World() {
+        food = new byte[WIDTH][HEIGHT];
+        originalFood = new byte[WIDTH][HEIGHT];
+        robots = new ArrayList<>();
     }
 
     private void placeFood(int numFood) {
-        for (int i = 0; i < numFood; i++) {
-            int x = Utils.randInt(width);
-            int y = Utils.randInt(height);
+        for(int i = 0; i < numFood; i++) {
+            int x = Utils.randInt(WIDTH);
+            int y = Utils.randInt(HEIGHT);
 
-            while (food[x][y] > 0) {
-                x = Utils.randInt(width);
-                y = Utils.randInt(height);
+            while(food[x][y] > 0) {
+                x = Utils.randInt(WIDTH);
+                y = Utils.randInt(HEIGHT);
             }
 
             food[x][y] = 1;
+            originalFood[x][y] = 1;
         }
-
-        originalFood = Arrays.copyOf(food, food.length);
     }
 
-    public void startSimulation(int numAnimals) {
-        if (state != State.READY) return;
+    public void startSimulation(int numRobots) {
+        this.numRobots = numRobots;
 
-        state = State.SIMULATING;
-        this.numAnimals = numAnimals;
-
-        for (int i = 0; i < numAnimals; i++) {
-            animals.add(new Animal(WIDTH / 2, HEIGHT / 2));
+        for(int i = 0; i < numRobots; i++) {
+            robots.add(new Robot(WIDTH / 2, HEIGHT / 2));
         }
 
         placeFood(40);
-        currentAnimal = 0;
+        currentRobot = 0;
+        genFinished = false;
     }
 
     public void tick() {
-        if (state != State.SIMULATING) return;
+        Robot robot = getCurrentRobot();
+        robot.tick(this);
+        if(robot.isDead()) {
+            currentRobot++;
+            food = Utils.copy2dArray(originalFood);
+            genFinished = currentRobot >= numRobots;
+        }
+    }
 
-        Animal animal = getCurrentAnimal();
-        animal.tick(this);
-        if (animal.isDead()) {
-            currentAnimal++;
-            food = Arrays.copyOf(originalFood, originalFood.length);
+    public void render(Graphics2D g) {
+        for(int y = 0; y < HEIGHT; y++) {
+            for(int x = 0; x < WIDTH; x++) {
+                if(getFood(x, y) > 0) {
+                    g.setColor(Color.RED);
+                    g.fill(new Ellipse2D.Float(x * CanvasPanel.BOX_W, y * CanvasPanel.BOX_H, CanvasPanel.BOX_W, CanvasPanel.BOX_H));
+                }
+            }
         }
 
-        if (currentAnimal > numAnimals) state = State.REPRODUCING;
+        Robot a = getCurrentRobot();
+        g.setColor(Color.BLUE);
+        g.fill(new Ellipse2D.Float(a.x * CanvasPanel.BOX_W, a.y * CanvasPanel.BOX_H, CanvasPanel.BOX_W, CanvasPanel.BOX_H));
+
+        if(a.isScanning()) {
+            g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
+            g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
+                    CanvasPanel.BOX_W / 2.0f, CanvasPanel.BOX_H / 2.0f));
+        }
     }
 
     public byte getFood(int x, int y) {
-        return food[Utils.wrap(x, width)][Utils.wrap(y, height)];
+        return food[Utils.wrap(x, WIDTH)][Utils.wrap(y, HEIGHT)];
     }
 
     public void setFood(int x, int y, byte value) {
-        food[Utils.wrap(x, width)][Utils.wrap(y, height)] = value;
+        food[Utils.wrap(x, WIDTH)][Utils.wrap(y, HEIGHT)] = value;
     }
 
-    public Animal getCurrentAnimal() {
-        return animals.get(currentAnimal);
+    public Robot getCurrentRobot() {
+        return robots.get(currentRobot);
     }
 
-    public State getState() {
-        return state;
-    }
-
-    public enum State {
-        READY, SIMULATING, REPRODUCING, RESTARING
+    public boolean generationFinished() {
+        return genFinished;
     }
 }

@@ -4,25 +4,25 @@ import dev.thomaslienbacher.evolution.utils.Utils;
 
 import java.util.Arrays;
 
-public class Animal implements Comparable<Animal> {
+public class Robot implements Comparable<Robot> {
     public static final int MAX_MOVES = 6;
     public static final int MIN_MOVES = 2;
     public static final int START_ENERGY = 20;
     public static final int GAIN_FOOD = 10;
 
+    private static int idCounter = 0;
+
+    private int id;
     public int x, y;
     public int fitness = 0;
     public int energy = START_ENERGY;
     private byte[] moves; //clockwise 0-7
     private int state = 0;
 
-    /**
-     * Creates a new randomized animal
-     *
-     * @param x x pos of animal
-     * @param y y pos of animal
-     */
-    public Animal(int x, int y) {
+    public Robot(int x, int y) {
+        this.id = idCounter;
+        idCounter++;
+
         this.x = x;
         this.y = y;
         this.moves = new byte[Utils.randIntIncl(MIN_MOVES, MAX_MOVES)];
@@ -73,8 +73,8 @@ public class Animal implements Comparable<Animal> {
                 }
             }
 
-            x = Utils.wrap(x, world.width);
-            y = Utils.wrap(y, world.height);
+            x = Utils.wrap(x, World.WIDTH);
+            y = Utils.wrap(y, World.HEIGHT);
 
             state++;
         } else {
@@ -102,21 +102,12 @@ public class Animal implements Comparable<Animal> {
         return state >= moves.length;
     }
 
-    /**
-     * Creates a new animal based on this one
-     * and mutates it
-     *
-     * @param mutability percent on how much to mutate
-     * @return new mutated animal
-     */
-    public Animal reproduce(double mutability) {
-        return null;
-    }
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "x=" + x +
+        return "Robot{" +
+                "id=" + id +
+                ", x=" + x +
                 ", y=" + y +
                 ", fitness=" + fitness +
                 ", energy=" + energy +
@@ -126,7 +117,7 @@ public class Animal implements Comparable<Animal> {
     }
 
     @Override
-    public int compareTo(Animal o) {
+    public int compareTo(Robot o) {
         return this.fitness - o.fitness;
     }
 }

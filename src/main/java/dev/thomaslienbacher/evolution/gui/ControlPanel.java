@@ -1,10 +1,8 @@
 package dev.thomaslienbacher.evolution.gui;
 
-import dev.thomaslienbacher.evolution.world.World;
+import dev.thomaslienbacher.evolution.Simulator;
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Style;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 
@@ -13,36 +11,34 @@ public class ControlPanel {
     private JButton btnStart;
     private JButton btnTick;
     private JTextPane tpInfo;
-    private JButton btnRun;
+    private JButton btnStartRun;
     private JSpinner spnRunSpeed;
+    private JButton btnInstantGen;
+    private JButton btnStopRun;
 
-    public ControlPanel(Gui gui, World world) {
-        btnStart.addActionListener((e) -> {
-            world.startSimulation(15);
-            gui.repaintWorld();
-        });
+    public ControlPanel(Simulator simulator) {
+        btnStart.addActionListener((e) ->
+                simulator.start()
+        );
 
-        btnTick.addActionListener((e) -> {
-            if (world.getState() != World.State.SIMULATING) return;
+        btnTick.addActionListener((e) ->
+                simulator.tick()
+        );
 
-            world.tick();
-            StyledDocument doc = getFreshDocument();
+        btnStartRun.addActionListener((e) ->
+                simulator.startRunning((int) spnRunSpeed.getValue())
+        );
 
-            try {
-                doc.insertString(doc.getLength(), world.getCurrentAnimal().toString(), null);
-            } catch (BadLocationException e1) {
-                e1.printStackTrace();
-            }
-
-            gui.repaintWorld();
-        });
+        btnStopRun.addActionListener((e) ->
+                simulator.stopRunning()
+        );
     }
 
     public StyledDocument getFreshDocument() {
         StyledDocument doc = tpInfo.getStyledDocument();
         try {
             doc.remove(0, doc.getLength());
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
 
@@ -65,23 +61,37 @@ public class ControlPanel {
      */
     private void $$$setupUI$$$() {
         pnlControl = new JPanel();
-        pnlControl.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+        pnlControl.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(6, 1, new Insets(0, 0, 0, 0), -1, -1));
+        pnlControl.setMinimumSize(new Dimension(174, 200));
+        pnlControl.setOpaque(false);
+        pnlControl.setPreferredSize(new Dimension(500, 400));
         btnStart = new JButton();
         btnStart.setText("Start Simulation");
-        pnlControl.add(btnStart, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlControl.add(btnStart, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         btnTick = new JButton();
         btnTick.setText("Tick");
         pnlControl.add(btnTick, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         tpInfo = new JTextPane();
-        pnlControl.add(tpInfo, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        pnlControl.add(tpInfo, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 100), null, 0, false));
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new BorderLayout(0, 0));
         pnlControl.add(panel1, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         spnRunSpeed = new JSpinner();
+        spnRunSpeed.setMaximumSize(new Dimension(150, 24));
+        spnRunSpeed.setMinimumSize(new Dimension(150, 24));
+        spnRunSpeed.setPreferredSize(new Dimension(150, 24));
         panel1.add(spnRunSpeed, BorderLayout.WEST);
-        btnRun = new JButton();
-        btnRun.setText("Run");
-        panel1.add(btnRun, BorderLayout.CENTER);
+        btnStartRun = new JButton();
+        btnStartRun.setLabel("Start Auto Run");
+        btnStartRun.setText("Start Auto Run");
+        panel1.add(btnStartRun, BorderLayout.CENTER);
+        btnInstantGen = new JButton();
+        btnInstantGen.setText("Instant Generation");
+        pnlControl.add(btnInstantGen, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        btnStopRun = new JButton();
+        btnStopRun.setLabel("Stop Auto Run");
+        btnStopRun.setText("Stop Auto Run");
+        pnlControl.add(btnStopRun, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

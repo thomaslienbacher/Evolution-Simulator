@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2d153c1-a4ed-4d51-b9fd-f96934cdaa14" name="Default Changelist" comment="" />
+    <list default="true" id="d2d153c1-a4ed-4d51-b9fd-f96934cdaa14" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -18,13 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="90">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#235#236#0" expanded="true" />
+                <element signature="e#271#272#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -33,10 +44,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
+            <state relative-caret-position="504">
+              <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#944#945#0" expanded="true" />
+                <element signature="e#979#980#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Simulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1950#1951#0" expanded="true" />
+                <element signature="e#2061#2062#0" expanded="true" />
+                <element signature="e#2137#2138#0" expanded="true" />
+                <element signature="e#2209#2210#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="56" column="46" lean-forward="true" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+            <state relative-caret-position="550">
+              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,17 +83,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
+            <state relative-caret-position="638">
+              <caret line="94" column="38" lean-forward="true" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1926#1927#0" expanded="true" />
-                <element signature="e#2052#2053#0" expanded="true" />
-                <element signature="e#2141#2142#0" expanded="true" />
-                <element signature="e#2200#2201#0" expanded="true" />
+                <element signature="e#2658#2659#0" expanded="true" />
+                <element signature="e#2784#2785#0" expanded="true" />
+                <element signature="e#2869#2870#0" expanded="true" />
+                <element signature="e#2938#2939#0" expanded="true" />
+                <element signature="e#2972#2973#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,31 +108,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="36" selection-end-column="31" />
+            <state relative-caret-position="504">
+              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
               <folding>
                 <element signature="initializer##0;class#ControlPanel#0" expanded="true" />
-                <element signature="e#3013#3014#0" expanded="true" />
-                <element signature="e#3046#3047#0" expanded="true" />
+                <element signature="e#4628#4629#0" expanded="true" />
+                <element signature="e#4661#4662#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Animal.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="129" column="40" selection-start-line="129" selection-start-column="40" selection-end-line="129" selection-end-column="40" />
+            <state relative-caret-position="306">
+              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2457#2458#0" expanded="true" />
-                <element signature="e#2490#2491#0" expanded="true" />
-                <element signature="e#2414#2415#0" expanded="true" />
-                <element signature="e#2456#2457#0" expanded="true" />
-                <element signature="e#2860#2861#0" expanded="true" />
                 <element signature="e#3239#3240#0" expanded="true" />
-                <element signature="e#3263#3264#0" expanded="true" />
+                <element signature="e#3286#3287#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,21 +136,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="52" lean-forward="true" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+            <state relative-caret-position="532">
+              <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
               <folding>
                 <element signature="e#108#109#0" expanded="true" />
-                <element signature="e#174#175#0" expanded="true" />
-                <element signature="e#225#226#0" expanded="true" />
-                <element signature="e#303#304#0" expanded="true" />
-                <element signature="e#108#109#0" expanded="true" />
-                <element signature="e#168#169#0" expanded="true" />
-                <element signature="e#209#210#0" expanded="true" />
-                <element signature="e#269#270#0" expanded="true" />
-                <element signature="e#284#285#0" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#544#545#0" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#1151#1152#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -140,6 +157,19 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>height</find>
+      <find>boxH</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>HEIGHT</replace>
+      <replace>CanvasPanel.BOX_H</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -151,14 +181,17 @@
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.form" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/WorldPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/__sadasd.form" />
+        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.form" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Animal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Robot.java" />
         <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Simulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java" />
       </list>
     </option>
   </component>
@@ -167,11 +200,48 @@
     <option name="width" value="974" />
     <option name="height" value="788" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
+              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
+              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
+              <item name="gui" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
+              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
+              <item name="utils" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
+              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
+              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
+              <item name="world" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,61 +279,20 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-            </path>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
-              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
-              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
-              <item name="gui" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
-              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
-              <item name="utils" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="evolution-simulator" type="58d84e3e:PackageViewProjectNode" />
-              <item name="evolution-simulator" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="evolution-simulator.main" type="616d4139:PackageViewModuleNode" />
-              <item name="dev.thomaslienbacher.evolution" type="1f31426a:PackageElementNode" />
-              <item name="world" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545832761317" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545839251690" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
@@ -300,6 +329,9 @@
       </method>
     </configuration>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d2d153c1-a4ed-4d51-b9fd-f96934cdaa14" name="Default Changelist" comment="" />
@@ -309,11 +341,12 @@
       <updated>1545749252834</updated>
       <workItem from="1545749270124" duration="2420000" />
       <workItem from="1545751799390" duration="15613000" />
+      <workItem from="1545833657731" duration="5589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18033000" />
+    <option name="totallyTimeSpent" value="23622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -325,29 +358,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20726173" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20948827" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Inspection Results" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37821484" visible="true" weight="0.31587562" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.37821484" visible="true" weight="0.2708559" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Serial Monitor" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.50075644" weight="0.32405892" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.50075644" weight="0.32394367" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969743" weight="0.34860885" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="CMake" order="13" sideWeight="0.4969743" weight="0.32569557" />
       <window_info anchor="bottom" id="Build" order="14" sideWeight="0.49924356" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="15" show_stripe_button="false" />
@@ -367,263 +401,154 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/StrictMath.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/StrictMath.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Frame.form" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Frame.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/awt/SunToolkit.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Graphics.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Runnable.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.form" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/UIManager.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Container.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/GridLayout.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/System.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Font.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Config.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Graphics2D.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Stroke.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Math.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Object.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/text/StyledDocument.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/text/Document.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/geom/RoundRectangle2D.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Arrays.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1914">
-          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+        <state relative-caret-position="298">
+          <caret line="3234" column="25" selection-start-line="3234" selection-start-column="25" selection-end-line="3234" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Frame.form">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/__sadasd.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Frame.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/__sadasd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-141">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="-49">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#Frame#0" expanded="true" />
+            <element signature="initializer##0;class#__sadasd#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/awt/SunToolkit.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="320" column="29" selection-start-line="320" selection-start-column="29" selection-end-line="320" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="3309" column="16" selection-start-line="3309" selection-start-column="16" selection-end-line="3309" selection-end-column="16" />
-          <folding>
-            <element signature="e#114480#114481#0" expanded="true" />
-            <element signature="e#114527#114528#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Graphics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="467" column="25" selection-start-line="467" selection-start-column="25" selection-end-line="467" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/UIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="176" column="13" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-726">
-          <caret line="417" column="21" selection-start-line="417" selection-start-column="21" selection-end-line="417" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/GridLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="164" column="11" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
-          <folding>
-            <element signature="e#4996#4997#0" expanded="true" />
-            <element signature="e#5034#5035#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="398" column="30" selection-start-line="398" selection-start-column="30" selection-end-line="398" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Font.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="566" column="11" selection-start-line="566" selection-start-column="11" selection-end-line="566" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Graphics2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="882" column="37" selection-start-line="882" selection-start-column="37" selection-end-line="882" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Stroke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-508">
-          <caret line="1236" column="25" selection-start-line="1236" selection-start-column="25" selection-end-line="1236" selection-end-column="25" />
-          <folding>
-            <element signature="e#17181#17182#0" expanded="true" />
-            <element signature="e#17264#17265#0" expanded="true" />
-            <element signature="e#48572#48573#0" expanded="true" />
-            <element signature="e#48621#48622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="211" column="28" selection-start-line="211" selection-start-column="28" selection-end-line="211" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/text/StyledDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2237">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/utils/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="52" lean-forward="true" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+        <state relative-caret-position="532">
+          <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
           <folding>
             <element signature="e#108#109#0" expanded="true" />
-            <element signature="e#174#175#0" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#108#109#0" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#209#210#0" expanded="true" />
-            <element signature="e#269#270#0" expanded="true" />
-            <element signature="e#284#285#0" expanded="true" />
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/text/Document.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="328" column="16" selection-start-line="328" selection-start-column="16" selection-end-line="328" selection-end-column="16" />
+        <state relative-caret-position="306">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3239#3240#0" expanded="true" />
+            <element signature="e#3286#3287#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/geom/RoundRectangle2D.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="124" column="15" selection-start-line="124" selection-start-column="15" selection-end-line="124" selection-end-column="15" />
+        <state relative-caret-position="504">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="initializer##0;class#ControlPanel#0" expanded="true" />
+            <element signature="e#4628#4629#0" expanded="true" />
+            <element signature="e#4661#4662#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.form">
       <provider selected="true" editor-type-id="ui-designer" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/ControlPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="36" selection-end-column="31" />
+        <state relative-caret-position="638">
+          <caret line="94" column="38" lean-forward="true" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
           <folding>
-            <element signature="initializer##0;class#ControlPanel#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#3046#3047#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2658#2659#0" expanded="true" />
+            <element signature="e#2784#2785#0" expanded="true" />
+            <element signature="e#2869#2870#0" expanded="true" />
+            <element signature="e#2938#2939#0" expanded="true" />
+            <element signature="e#2972#2973#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/CanvasPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="56" column="46" lean-forward="true" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+        <state relative-caret-position="550">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1950#1951#0" expanded="true" />
+            <element signature="e#2061#2062#0" expanded="true" />
+            <element signature="e#2137#2138#0" expanded="true" />
+            <element signature="e#2209#2210#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/gui/Gui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
+        <state relative-caret-position="504">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/Animal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="129" column="40" selection-start-line="129" selection-start-column="40" selection-end-line="129" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2457#2458#0" expanded="true" />
-            <element signature="e#2490#2491#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
-            <element signature="e#2860#2861#0" expanded="true" />
-            <element signature="e#3239#3240#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="90">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="3207" column="28" selection-start-line="3207" selection-start-column="28" selection-end-line="3207" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dev/thomaslienbacher/evolution/world/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1926#1927#0" expanded="true" />
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -657,6 +582,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>gauges-full-1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

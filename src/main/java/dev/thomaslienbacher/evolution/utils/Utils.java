@@ -1,5 +1,7 @@
 package dev.thomaslienbacher.evolution.utils;
 
+import java.util.Arrays;
+
 public class Utils {
 
     public static int randInt(int max) {
@@ -31,6 +33,15 @@ public class Utils {
 
     public static byte[][] copy2dArray(byte[][] src) {
         byte[][] dest = src.clone();
+
+        for(int i = 0; i < src.length; i++) {
+            dest[i] = Arrays.copyOf(src[i], src[i].length);
+        }
+
         return dest;
+    }
+
+    public static int clamp(int val, int min, int max) {
+        return Math.min(max, Math.max(val, min));
     }
 }
