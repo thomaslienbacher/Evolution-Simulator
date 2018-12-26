@@ -2,9 +2,12 @@ package dev.thomaslienbacher.evolution;
 
 import dev.thomaslienbacher.evolution.gui.Gui;
 import dev.thomaslienbacher.evolution.utils.Utils;
+import dev.thomaslienbacher.evolution.world.Robot;
 import dev.thomaslienbacher.evolution.world.World;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created on 26.12.2018.
@@ -14,10 +17,11 @@ import java.awt.*;
 public class Simulator {
 
     public enum State {
-        INIT, READY, SIMULATING, RUNNING, REPRODUCING, RESTARTING
+        INIT, READY, SIMULATING, RUNNING, REPRODUCING,
     }
 
-    public static final int NUM_ANIMALS = 100;
+    public static final int NUM_ANIMALS = 1000;
+    public static final int NUM_ANIMALS_KILL = 600;
 
     private State state;
     private World world;
@@ -48,6 +52,7 @@ public class Simulator {
         if(world.generationFinished()) {
             state = State.REPRODUCING;
             gui.repaintWorld();
+            showAnimalsSorted();
             return;
         }
 
@@ -59,11 +64,14 @@ public class Simulator {
         if(state != State.SIMULATING) return;
         state = State.RUNNING;
 
-        final int waitTime = 110 - (Utils.clamp(speed, 1, 10) * 10);
+        final int waitTime = 100 - (Utils.clamp(speed, 1, 10) * 10);
 
         runThread = new Thread(() -> {
             while(true) {
+                if(state != State.RUNNING) break;
+
                 this.tick();
+                if(world.generationFinished()) break;
 
                 try {
                     Thread.sleep(waitTime);
@@ -81,6 +89,39 @@ public class Simulator {
         state = State.SIMULATING;
     }
 
+    public void finishGeneration() {
+        if(!isSimulating()) return;
+
+        while(!world.generationFinished()) {
+            world.tick();
+        }
+
+        state = State.REPRODUCING;
+        gui.repaintWorld();
+        showAnimalsSorted();
+    }
+
+    public void reproduceAndRestart() {
+        if(state != State.REPRODUCING) return;
+
+        ArrayList<Robot> robots = world.getRobots();
+        Collections.sort(robots);
+
+        for(int i = NUM_ANIMALS_KILL; i < world.getNumRobots(); i++) {
+            Robot mut = robots.get(i).mutate();
+            robots.set(i, mut);
+        }
+
+        for(Robot r : robots) {
+            r.reset();
+        }
+
+        world.restart();
+        state = State.SIMULATING;
+        showAnimalsSorted();
+        gui.repaintWorld();
+    }
+
     public boolean isReady() {
         return state != State.INIT;
     }
@@ -95,5 +136,19 @@ public class Simulator {
 
     public String stateName() {
         return state.toString();
+    }
+
+    public void showAnimalsSorted() {
+        StringBuilder sb = new StringBuilder();
+
+        ArrayList robots = world.getRobots();
+        Collections.sort(robots);
+
+        for(Robot r : world.getRobots()) {
+            sb.append(r.toStringSmall());
+            sb.append('\n');
+        }
+
+        gui.setInfoString(sb.toString());
     }
 }

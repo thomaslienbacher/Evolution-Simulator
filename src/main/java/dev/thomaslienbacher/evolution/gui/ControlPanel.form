@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="dev.thomaslienbacher.evolution.gui.ControlPanel">
-  <grid id="27dc6" binding="pnlControl" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pnlControl" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -8,7 +8,7 @@
     <properties>
       <minimumSize width="174" height="200"/>
       <opaque value="false"/>
-      <preferredSize width="500" height="400"/>
+      <preferredSize width="500" height="500"/>
     </properties>
     <border type="none"/>
     <children>
@@ -27,14 +27,6 @@
         <properties>
           <text value="Tick"/>
         </properties>
-      </component>
-      <component id="758c1" class="javax.swing.JTextPane" binding="tpInfo">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="100"/>
-          </grid>
-        </constraints>
-        <properties/>
       </component>
       <grid id="da0d5" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints>
@@ -60,6 +52,36 @@
           </component>
         </children>
       </grid>
+      <component id="6e50e" class="javax.swing.JButton" binding="btnStopRun">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <label value="Stop Auto Run"/>
+          <text value="Stop Auto Run"/>
+        </properties>
+      </component>
+      <scrollpane id="e1b93" binding="sbInfo">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="758c1" class="javax.swing.JTextPane" binding="tpInfo">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="dfd3" class="javax.swing.JButton" binding="btnShowRobots">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Show Robots"/>
+        </properties>
+      </component>
       <component id="f23bd" class="javax.swing.JButton" binding="btnInstantGen">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -68,13 +90,12 @@
           <text value="Instant Generation"/>
         </properties>
       </component>
-      <component id="6e50e" class="javax.swing.JButton" binding="btnStopRun">
+      <component id="2fdc7" class="javax.swing.JButton" binding="btnEvolve">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <label value="Stop Auto Run"/>
-          <text value="Stop Auto Run"/>
+          <text value="Evolve"/>
         </properties>
       </component>
     </children>

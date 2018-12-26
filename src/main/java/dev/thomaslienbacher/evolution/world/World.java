@@ -10,12 +10,13 @@ import java.util.ArrayList;
 
 public class World {
 
-    public static final int WIDTH = 40, HEIGHT = 40;
+    public static final int WIDTH = 80, HEIGHT = 80;
+    public static final int NUM_FOOD = 200;
 
     private ArrayList<Robot> robots;
     private byte[][] originalFood;
     private byte[][] food;
-    private int numRobots;
+    private int numRobots;//TODO: implement dynamic number of robots
     private int currentRobot;
     private boolean genFinished;
 
@@ -25,31 +26,36 @@ public class World {
         robots = new ArrayList<>();
     }
 
-    private void placeFood(int numFood) {
-        for(int i = 0; i < numFood; i++) {
+    private void generateFood() {
+        for(int y = 0; y < HEIGHT; y++) {
+            for(int x = 0; x < WIDTH; x++) {
+                originalFood[x][y] = 0;
+            }
+        }
+
+        for(int i = 0; i < NUM_FOOD; i++) {
             int x = Utils.randInt(WIDTH);
             int y = Utils.randInt(HEIGHT);
 
-            while(food[x][y] > 0) {
+            while(originalFood[x][y] > 0) {
                 x = Utils.randInt(WIDTH);
                 y = Utils.randInt(HEIGHT);
             }
 
-            food[x][y] = 1;
             originalFood[x][y] = 1;
         }
+
+        food = Utils.copy2dArray(originalFood);
     }
 
     public void startSimulation(int numRobots) {
         this.numRobots = numRobots;
 
         for(int i = 0; i < numRobots; i++) {
-            robots.add(new Robot(WIDTH / 2, HEIGHT / 2));
+            robots.add(new Robot());
         }
 
-        placeFood(40);
-        currentRobot = 0;
-        genFinished = false;
+        generateFood();
     }
 
     public void tick() {
@@ -73,14 +79,23 @@ public class World {
         }
 
         Robot a = getCurrentRobot();
-        g.setColor(Color.BLUE);
-        g.fill(new Ellipse2D.Float(a.x * CanvasPanel.BOX_W, a.y * CanvasPanel.BOX_H, CanvasPanel.BOX_W, CanvasPanel.BOX_H));
 
-        if(a.isScanning()) {
-            g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
-            g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
-                    CanvasPanel.BOX_W / 2.0f, CanvasPanel.BOX_H / 2.0f));
+        if(a != null) {
+            g.setColor(Color.BLUE);
+            g.fill(new Ellipse2D.Float(a.x * CanvasPanel.BOX_W, a.y * CanvasPanel.BOX_H, CanvasPanel.BOX_W, CanvasPanel.BOX_H));
+
+            if(a.isScanning()) {
+                g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
+                g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
+                        CanvasPanel.BOX_W / 2.0f, CanvasPanel.BOX_H / 2.0f));
+            }
         }
+    }
+
+    public void restart() {
+        food = Utils.copy2dArray(originalFood);
+        currentRobot = 0;
+        genFinished = false;
     }
 
     public byte getFood(int x, int y) {
@@ -92,10 +107,19 @@ public class World {
     }
 
     public Robot getCurrentRobot() {
+        if(currentRobot >= robots.size()) return null;
         return robots.get(currentRobot);
     }
 
     public boolean generationFinished() {
         return genFinished;
+    }
+
+    public ArrayList<Robot> getRobots() {
+        return robots;
+    }
+
+    public int getNumRobots() {
+        return numRobots;
     }
 }

@@ -5,36 +5,46 @@ import dev.thomaslienbacher.evolution.utils.Utils;
 import java.util.Arrays;
 
 public class Robot implements Comparable<Robot> {
-    public static final int MAX_MOVES = 6;
-    public static final int MIN_MOVES = 2;
+    public static final int MAX_MOVES = 10;
+    public static final int MIN_MOVES = 4;
     public static final int START_ENERGY = 20;
     public static final int GAIN_FOOD = 10;
+    public static final double MOVE_MUTABILITY = 0.3;
+    public static final double DIRECTION_MUTABILITY = 0.7;
+    public static final int NUM_DIRECTIONS = 7;
 
     private static int idCounter = 0;
 
     private int id;
     public int x, y;
-    public int fitness = 0;
-    public int energy = START_ENERGY;
+    private int fitness;
+    private int energy;
     private byte[] moves; //clockwise 0-7
-    private int state = 0;
+    private int state;
 
-    public Robot(int x, int y) {
+    public Robot() {
         this.id = idCounter;
         idCounter++;
 
-        this.x = x;
-        this.y = y;
+        reset();
         this.moves = new byte[Utils.randIntIncl(MIN_MOVES, MAX_MOVES)];
 
-        for (int i = 0; i < this.moves.length; i++) {
-            this.moves[i] = (byte) Utils.randIntIncl(0, 7);
+        for(int i = 0; i < this.moves.length; i++) {
+            this.moves[i] = (byte) Utils.randIntIncl(0, NUM_DIRECTIONS);
         }
     }
 
+    public void reset() {
+        this.x = World.WIDTH / 2;
+        this.y = World.HEIGHT / 2;
+        this.fitness = 0;
+        this.state = 0;
+        this.energy = START_ENERGY;
+    }
+
     public void tick(World world) {
-        if (state < moves.length) {
-            switch (moves[state]) {
+        if(state < moves.length) {
+            switch(moves[state]) {
                 case 0: {
                     y++;
                     break;
@@ -78,9 +88,9 @@ public class Robot implements Comparable<Robot> {
 
             state++;
         } else {
-            for (int y = -1; y <= 1; y++) {
-                for (int x = -1; x <= 1; x++) {
-                    if (world.getFood(this.x + x, this.y + y) > 0) {
+            for(int y = -1; y <= 1; y++) {
+                for(int x = -1; x <= 1; x++) {
+                    if(world.getFood(this.x + x, this.y + y) > 0) {
                         fitness++;
                         energy += GAIN_FOOD;
                         world.setFood(this.x + x, this.y + y, (byte) 0);
@@ -93,6 +103,38 @@ public class Robot implements Comparable<Robot> {
 
         energy--;
     }
+
+    public Robot mutate() {
+        Robot r = new Robot();
+        r.moves = moves.clone();
+
+        if(Math.random() < MOVE_MUTABILITY) {
+            byte[] mut;
+
+            boolean canIncrease = r.moves.length < MAX_MOVES;
+            boolean canDecrease = r.moves.length > MIN_MOVES;
+
+            if (Math.random() <= 0.5 && canIncrease) {
+                mut = new byte[r.moves.length + 1];
+                System.arraycopy(r.moves, 0, mut, 0, r.moves.length);
+                mut[r.moves.length] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
+                r.moves = mut;
+            }
+            else if(canDecrease) {
+                mut = new byte[r.moves.length - 1];
+                System.arraycopy(r.moves, 0, mut, 0, r.moves.length - 1);
+                r.moves = mut;
+            }
+        }
+
+        if(Math.random() < DIRECTION_MUTABILITY) {
+            int pos = Utils.randInt(r.moves.length);
+            r.moves[pos] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
+        }
+
+        return r;
+    }
+
 
     public boolean isDead() {
         return energy < 0;
@@ -116,8 +158,16 @@ public class Robot implements Comparable<Robot> {
                 '}';
     }
 
+    public String toStringSmall() {
+        return "Robot{" +
+                "id=" + id +
+                ", fitness=" + fitness +
+                ", moves=" + Arrays.toString(moves) +
+                '}';
+    }
+
     @Override
     public int compareTo(Robot o) {
-        return this.fitness - o.fitness;
+        return o.fitness - this.fitness;
     }
 }
