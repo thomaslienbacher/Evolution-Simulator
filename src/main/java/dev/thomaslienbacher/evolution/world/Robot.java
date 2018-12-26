@@ -3,12 +3,15 @@ package dev.thomaslienbacher.evolution.world;
 import dev.thomaslienbacher.evolution.utils.Utils;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Robot implements Comparable<Robot> {
-    public static final int MAX_MOVES = 14;
-    public static final int MIN_MOVES = 8;
-    public static final int START_ENERGY = 20;
-    public static final int GAIN_FOOD = 10;
+    public static final int MAX_MOVES = 20;
+    public static final int MIN_MOVES = 3;
+    public static final double START_ENERGY = 20;
+    public static final double GAIN_FOOD = 5;
+    public static final double SCAN_COST = 1;
+    public static final double MOVE_COST = 0.2;
     public static final double MOVE_MUTABILITY = 0.6;
     public static final double DIRECTION_MUTABILITY = 0.6;
     public static final int NUM_DIRECTIONS = 7;
@@ -19,7 +22,7 @@ public class Robot implements Comparable<Robot> {
     private int generation;
     public int x, y;
     private int fitness;
-    private int energy;
+    private double energy;
     private byte[] moves; //clockwise 0-7
     private int state;
 
@@ -88,6 +91,8 @@ public class Robot implements Comparable<Robot> {
             x = Utils.wrap(x, World.WIDTH);
             y = Utils.wrap(y, World.HEIGHT);
 
+
+            energy -= MOVE_COST;
             state++;
         } else {
             for(int y = -1; y <= 1; y++) {
@@ -100,10 +105,9 @@ public class Robot implements Comparable<Robot> {
                 }
             }
 
+            energy -= SCAN_COST;
             state = 0;
         }
-
-        energy--;
     }
 
     public Robot mutate() {
@@ -156,7 +160,7 @@ public class Robot implements Comparable<Robot> {
                 ", x=" + x +
                 ", y=" + y +
                 ", fitness=" + fitness +
-                ", energy=" + energy +
+                ", energy=" + String.format(Locale.ENGLISH, "%.2f", energy) +
                 ", moves=" + Arrays.toString(moves) +
                 ", state=" + state +
                 '}';

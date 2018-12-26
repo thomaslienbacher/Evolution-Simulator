@@ -7,13 +7,12 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class World {
 
     public static final int WIDTH = 80, HEIGHT = 80;
-    public static final int NUM_FOOD = 240;
+    public static final int NUM_FOOD = 190;
 
     private ArrayList<Robot> robots;
     private byte[][] originalFood;

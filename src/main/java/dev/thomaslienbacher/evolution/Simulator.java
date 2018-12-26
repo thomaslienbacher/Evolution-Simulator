@@ -21,7 +21,7 @@ public class Simulator {
     }
 
     public static final int NUM_ANIMALS = 1000;
-    public static final int NUM_ANIMALS_KILL = 600;
+    public static final int NUM_ANIMALS_KILL = NUM_ANIMALS / 2;
 
     private State state;
     private World world;
@@ -153,7 +153,7 @@ public class Simulator {
     public void showRobotsSorted() {
         StringBuilder sb = new StringBuilder();
 
-        ArrayList robots = world.getRobots();
+        ArrayList<Robot> robots = world.getRobots();
         Collections.sort(robots);
 
         for(Robot r : world.getRobots()) {
