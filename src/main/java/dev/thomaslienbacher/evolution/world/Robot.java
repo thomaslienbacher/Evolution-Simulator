@@ -5,17 +5,18 @@ import dev.thomaslienbacher.evolution.utils.Utils;
 import java.util.Arrays;
 
 public class Robot implements Comparable<Robot> {
-    public static final int MAX_MOVES = 10;
-    public static final int MIN_MOVES = 4;
+    public static final int MAX_MOVES = 14;
+    public static final int MIN_MOVES = 8;
     public static final int START_ENERGY = 20;
     public static final int GAIN_FOOD = 10;
-    public static final double MOVE_MUTABILITY = 0.3;
-    public static final double DIRECTION_MUTABILITY = 0.7;
+    public static final double MOVE_MUTABILITY = 0.6;
+    public static final double DIRECTION_MUTABILITY = 0.6;
     public static final int NUM_DIRECTIONS = 7;
 
     private static int idCounter = 0;
 
     private int id;
+    private int generation;
     public int x, y;
     private int fitness;
     private int energy;
@@ -25,6 +26,7 @@ public class Robot implements Comparable<Robot> {
     public Robot() {
         this.id = idCounter;
         idCounter++;
+        this.generation = 0;
 
         reset();
         this.moves = new byte[Utils.randIntIncl(MIN_MOVES, MAX_MOVES)];
@@ -107,6 +109,7 @@ public class Robot implements Comparable<Robot> {
     public Robot mutate() {
         Robot r = new Robot();
         r.moves = moves.clone();
+        r.generation = generation + 1;
 
         if(Math.random() < MOVE_MUTABILITY) {
             byte[] mut;
@@ -148,7 +151,8 @@ public class Robot implements Comparable<Robot> {
     @Override
     public String toString() {
         return "Robot{" +
-                "id=" + id +
+                "gen=" + generation +
+                ", id=" + id +
                 ", x=" + x +
                 ", y=" + y +
                 ", fitness=" + fitness +
@@ -160,7 +164,8 @@ public class Robot implements Comparable<Robot> {
 
     public String toStringSmall() {
         return "Robot{" +
-                "id=" + id +
+                "gen=" + generation +
+                ", id=" + id +
                 ", fitness=" + fitness +
                 ", moves=" + Arrays.toString(moves) +
                 '}';

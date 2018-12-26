@@ -42,7 +42,7 @@ public class ControlPanel {
         );
 
         btnShowRobots.addActionListener((e) ->
-                simulator.showAnimalsSorted()
+                simulator.showRobotsSorted()
         );
 
         btnEvolve.addActionListener((e) ->

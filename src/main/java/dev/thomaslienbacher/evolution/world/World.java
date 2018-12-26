@@ -7,11 +7,13 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class World {
 
     public static final int WIDTH = 80, HEIGHT = 80;
-    public static final int NUM_FOOD = 200;
+    public static final int NUM_FOOD = 240;
 
     private ArrayList<Robot> robots;
     private byte[][] originalFood;
@@ -111,12 +113,27 @@ public class World {
         return robots.get(currentRobot);
     }
 
+
+    public Robot getBestRobot() {
+        ArrayList<Robot> rs = getRobots();
+        Collections.sort(rs);
+        return rs.get(0);
+    }
+
     public boolean generationFinished() {
         return genFinished;
     }
 
+    /**
+     * @return a clone of the arraylist
+     */
     public ArrayList<Robot> getRobots() {
-        return robots;
+        ArrayList<Robot> a = new ArrayList<>(robots);
+        return a;
+    }
+
+    public void setRobots(ArrayList<Robot> robots) {
+        this.robots = robots;
     }
 
     public int getNumRobots() {

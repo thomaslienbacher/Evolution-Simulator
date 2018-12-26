@@ -52,32 +52,37 @@ public class Simulator {
         if(world.generationFinished()) {
             state = State.REPRODUCING;
             gui.repaintWorld();
-            showAnimalsSorted();
+            showRobotsSorted();
             return;
         }
 
-        gui.setInfoString(world.getCurrentRobot().toString());
+        gui.setInfoString(world.getBestRobot().toStringSmall() + "\n" + world.getCurrentRobot().toString());
         gui.repaintWorld();
     }
 
-    public void startRunning(int speed) {
+    public void startRunning(final int speed) {
         if(state != State.SIMULATING) return;
         state = State.RUNNING;
 
         final int waitTime = 100 - (Utils.clamp(speed, 1, 10) * 10);
 
         runThread = new Thread(() -> {
-            while(true) {
-                if(state != State.RUNNING) break;
+            try {
+                while(true) {
+                    if(state != State.RUNNING) break;
 
-                this.tick();
-                if(world.generationFinished()) break;
+                    tick();
 
-                try {
+                    if(world.generationFinished()) {
+                        reproduce();
+                        state = State.RUNNING;
+                        Thread.sleep(20);
+                    }
+
                     Thread.sleep(waitTime);
-                } catch(InterruptedException e) {
-                    return;
                 }
+            } catch(InterruptedException e) {
+                return;
             }
         });
         runThread.start();
@@ -98,10 +103,10 @@ public class Simulator {
 
         state = State.REPRODUCING;
         gui.repaintWorld();
-        showAnimalsSorted();
+        showRobotsSorted();
     }
 
-    public void reproduceAndRestart() {
+    public void reproduce() {
         if(state != State.REPRODUCING) return;
 
         ArrayList<Robot> robots = world.getRobots();
@@ -116,9 +121,16 @@ public class Simulator {
             r.reset();
         }
 
+        world.setRobots(robots);
         world.restart();
+    }
+
+    public void reproduceAndRestart() {
+        if(state != State.REPRODUCING) return;
+
+        reproduce();
         state = State.SIMULATING;
-        showAnimalsSorted();
+        showRobotsSorted();
         gui.repaintWorld();
     }
 
@@ -138,7 +150,7 @@ public class Simulator {
         return state.toString();
     }
 
-    public void showAnimalsSorted() {
+    public void showRobotsSorted() {
         StringBuilder sb = new StringBuilder();
 
         ArrayList robots = world.getRobots();
