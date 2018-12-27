@@ -5,14 +5,13 @@ import dev.thomaslienbacher.evolution.utils.Utils;
 import java.util.Arrays;
 import java.util.Locale;
 
-//TODO: implement genes and pre calc move vector
 public class Robot implements Comparable<Robot> {
     public static final int MAX_GENES = 200;
     public static final int MIN_GENES = 1;
-    public static final double GAIN_FOOD = 4;
+    public static final double GAIN_FOOD = 4.0;
     public static final double SCAN_COST = 1.5;
-    public static final double MOVE_COST = 0.001;
-    public static final double LEN_MUTABILITY = 0.5;
+    public static final double MOVE_COST = 0;
+    public static final double LEN_MUTABILITY = 0.6;
     public static final int MAX_MUTATIONS = MAX_GENES - MIN_GENES;
     public static final int NUM_DIRECTIONS = 7;
 
@@ -179,7 +178,7 @@ public class Robot implements Comparable<Robot> {
         return "Robot{" +
                 "gen=" + generation +
                 ", id=" + id +
-                ", fitness=" + fitness +
+                ", fit=" + fitness +
                 ", genes=" + Arrays.toString(genes) +
                 '}';
     }
@@ -192,13 +191,32 @@ public class Robot implements Comparable<Robot> {
                 '}';
     }
 
+    public String toStringHash() {
+        return "Robot{" +
+                "gen=" + generation +
+                ", id=" + id +
+                ", fit=" + fitness +
+                ", geneslen=" + genes.length +
+                ", geneshash=" + String.format(Locale.ENGLISH, "%x", Arrays.hashCode(genes)) +
+                '}';
+    }
+
     public int getFitness() {
         return fitness;
     }
 
     @Override
     public int compareTo(Robot o) {
-        return Integer.compare(o.fitness, this.fitness);
+        int c = Integer.compare(o.fitness, this.fitness);//bigger better
+
+        if (c == 0) {
+            c = Integer.compare(genes.length, o.genes.length);//smaller better
+            if (c == 0) {
+                c = Integer.compare(o.generation, generation);//bigger better
+            }
+        }
+
+        return c;
     }
 
     @Override

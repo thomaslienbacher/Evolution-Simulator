@@ -87,7 +87,7 @@ public class World {
             if (a.isScanning()) {
                 g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
                 g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
-                        CanvasPanel.BOX_W / 2.0f, CanvasPanel.BOX_H / 2.0f));
+                        CanvasPanel.BOX_W, CanvasPanel.BOX_H));
             }
         }
     }

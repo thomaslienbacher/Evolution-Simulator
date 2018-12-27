@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 public class Simulator {
 
-    public static final int NUM_ANIMALS = 100_000;
+    public static final int NUM_ANIMALS = 20_000;
     public static final double PERCENT_KILL = 0.5;
     private State state;
     private World world;
@@ -140,8 +140,9 @@ public class Simulator {
 
             if (r.getFitness() > lastFitness) {
                 lastFitness = r.getFitness();
-                System.out.println(r.toStringSmall());
+                System.out.println("\n\nNew Fitness: " + r.toStringSmall());
             }
+            System.out.print("\rCycle: " + cycle + " Current Best: " + r.toStringHash() + "             ");
         }
     }
 
