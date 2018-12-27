@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 public class Simulator {
 
-    public static final int NUM_ANIMALS = 600;
+    public static final int NUM_ANIMALS = 100_000;
     public static final double PERCENT_KILL = 0.5;
     private State state;
     private World world;
@@ -85,6 +85,7 @@ public class Simulator {
                 }
             }
         });
+        runThread.setName("Run-Thread");
         runThread.start();
     }
 

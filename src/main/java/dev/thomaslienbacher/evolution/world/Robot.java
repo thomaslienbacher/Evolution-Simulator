@@ -5,15 +5,15 @@ import dev.thomaslienbacher.evolution.utils.Utils;
 import java.util.Arrays;
 import java.util.Locale;
 
+//TODO: implement genes and pre calc move vector
 public class Robot implements Comparable<Robot> {
-    public static final int MAX_MOVES = 50;
-    public static final int MIN_MOVES = 1;
-    public static final double START_ENERGY = 20;
-    public static final double GAIN_FOOD = 5;
+    public static final int MAX_GENES = 200;
+    public static final int MIN_GENES = 1;
+    public static final double GAIN_FOOD = 4;
     public static final double SCAN_COST = 1.5;
-    public static final double MOVE_COST = 0.01;
+    public static final double MOVE_COST = 0.001;
     public static final double LEN_MUTABILITY = 0.5;
-    public static final int MAX_MUTATIONS = MAX_MOVES - MIN_MOVES;
+    public static final int MAX_MUTATIONS = MAX_GENES - MIN_GENES;
     public static final int NUM_DIRECTIONS = 7;
 
     private static int idCounter = 0;
@@ -22,20 +22,21 @@ public class Robot implements Comparable<Robot> {
     private int generation;
     private int fitness;
     private double energy;
-    private byte[] moves; //clockwise 0-7
-    private int state;
+    private byte[] genes; //clockwise 0-7
+    private int movx, movy;//move vector
+    private int state;//0 = moving, 1 = scanning
 
     public Robot() {
         this.id = idCounter;
         idCounter++;
         this.generation = 0;
+        this.genes = new byte[Utils.randIntIncl(MIN_GENES, MAX_GENES)];
+
+        for(int i = 0; i < this.genes.length; i++) {
+            this.genes[i] = (byte) Utils.randIntIncl(0, NUM_DIRECTIONS);
+        }
 
         reset();
-        this.moves = new byte[Utils.randIntIncl(MIN_MOVES, MAX_MOVES)];
-
-        for (int i = 0; i < this.moves.length; i++) {
-            this.moves[i] = (byte) Utils.randIntIncl(0, NUM_DIRECTIONS);
-        }
     }
 
     public void reset() {
@@ -43,60 +44,67 @@ public class Robot implements Comparable<Robot> {
         this.y = World.HEIGHT / 2;
         this.fitness = 0;
         this.state = 0;
-        this.energy = START_ENERGY;
+        this.energy = GAIN_FOOD;
+        calcMove();
     }
 
-    public void tick(World world) {
-        if (state < moves.length) {
-            switch (moves[state]) {
+    private void calcMove() {
+        movx = 0;
+        movy = 0;
+
+        for(int i = 0; i < genes.length; i++) {
+            switch(genes[i]) {
                 case 0: {
-                    y++;
+                    movy++;
                     break;
                 }
                 case 1: {
-                    y++;
-                    x++;
+                    movy++;
+                    movx++;
                     break;
                 }
                 case 2: {
-                    x++;
+                    movx++;
                     break;
                 }
                 case 3: {
-                    y--;
-                    x++;
+                    movy--;
+                    movx++;
                     break;
                 }
                 case 4: {
-                    y--;
+                    movy--;
                     break;
                 }
                 case 5: {
-                    x--;
-                    y--;
+                    movx--;
+                    movy--;
                     break;
                 }
                 case 6: {
-                    x--;
+                    movx--;
                     break;
                 }
                 case 7: {
-                    x--;
-                    y++;
+                    movx--;
+                    movy++;
                     break;
                 }
             }
+        }
+    }
 
-            x = Utils.wrap(x, World.WIDTH);
-            y = Utils.wrap(y, World.HEIGHT);
+    public void tick(World world) {
+        if(state == 0) {
+            x = Utils.wrap(x + movx, World.WIDTH);
+            y = Utils.wrap(y + movy, World.HEIGHT);
 
-
-            energy -= MOVE_COST;
+            energy -= MOVE_COST * genes.length;
             state++;
         } else {
-            for (int y = -1; y <= 1; y++) {
-                for (int x = -1; x <= 1; x++) {
-                    if (world.getFood(this.x + x, this.y + y) > 0) {
+            for(int y = -1; y <= 1; y++) {
+                for(int x = -1; x <= 1; x++) {
+                    if(world.getFood(this.x + x, this.y + y) > 0) {
                         fitness++;
                         energy += GAIN_FOOD;
                         world.setFood(this.x + x, this.y + y, (byte) 0);
@@ -111,31 +119,31 @@ public class Robot implements Comparable<Robot> {
 
     public Robot mutate() {
         Robot r = new Robot();
-        r.moves = moves.clone();
+        r.genes = genes.clone();
         r.generation = generation + 1;
 
-        for (int i = 0; i < Math.max(r.moves.length, Utils.randInt(MAX_MUTATIONS)); i++) {
-            if (Math.random() < LEN_MUTABILITY / (double) MAX_MUTATIONS) {
+        for(int i = 0; i < Math.max(r.genes.length, Utils.randInt(MAX_MUTATIONS)); i++) {
+            if(Math.random() < LEN_MUTABILITY / (double) MAX_MUTATIONS) {
                 byte[] mut;
                 i++;
 
-                boolean canIncrease = r.moves.length < MAX_MOVES;
-                boolean canDecrease = r.moves.length > MIN_MOVES;
+                boolean canIncrease = r.genes.length < MAX_GENES;
+                boolean canDecrease = r.genes.length > MIN_GENES;
 
-                if (Math.random() <= 0.5 && canIncrease) {
-                    mut = new byte[r.moves.length + 1];
-                    System.arraycopy(r.moves, 0, mut, 0, r.moves.length);
-                    mut[r.moves.length] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
-                    r.moves = mut;
-                } else if (canDecrease) {
-                    mut = new byte[r.moves.length - 1];
-                    System.arraycopy(r.moves, 0, mut, 0, r.moves.length - 1);
-                    r.moves = mut;
+                if(Math.random() <= 0.5 && canIncrease) {
+                    mut = new byte[r.genes.length + 1];
+                    System.arraycopy(r.genes, 0, mut, 0, r.genes.length);
+                    mut[r.genes.length] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
+                    r.genes = mut;
+                } else if(canDecrease) {
+                    mut = new byte[r.genes.length - 1];
+                    System.arraycopy(r.genes, 0, mut, 0, r.genes.length - 1);
+                    r.genes = mut;
                 }
             }
 
-            int pos = Utils.randInt(r.moves.length);
-            r.moves[pos] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
+            int pos = Utils.randInt(r.genes.length);
+            r.genes[pos] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
         }
 
         return r;
@@ -147,7 +155,7 @@ public class Robot implements Comparable<Robot> {
     }
 
     public boolean isScanning() {
-        return state >= moves.length;
+        return state == 1;
     }
 
 
@@ -158,9 +166,11 @@ public class Robot implements Comparable<Robot> {
                 ", id=" + id +
                 ", x=" + x +
                 ", y=" + y +
+                ", movx=" + movx +
+                ", movy=" + movy +
                 ", fitness=" + fitness +
-                ", energy=" + String.format(Locale.ENGLISH, "%.2f", energy) +
-                ", moves=" + Arrays.toString(moves) +
+                ", energy=" + String.format(Locale.ENGLISH, "%.3f", energy) +
+                ", genes=" + Arrays.toString(genes) +
                 ", state=" + state +
                 '}';
     }
@@ -170,7 +180,7 @@ public class Robot implements Comparable<Robot> {
                 "gen=" + generation +
                 ", id=" + id +
                 ", fitness=" + fitness +
-                ", moves=" + Arrays.toString(moves) +
+                ", genes=" + Arrays.toString(genes) +
                 '}';
     }
 
@@ -178,7 +188,7 @@ public class Robot implements Comparable<Robot> {
         return "Robot{" +
                 "gen=" + generation +
                 ", id=" + id +
-                ", moves=" + Arrays.toString(moves) +
+                ", genes=" + Arrays.toString(genes) +
                 '}';
     }
 
@@ -193,14 +203,14 @@ public class Robot implements Comparable<Robot> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
         Robot robot = (Robot) o;
-        return Arrays.equals(moves, robot.moves);
+        return Arrays.equals(genes, robot.genes);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(moves);
+        return Arrays.hashCode(genes);
     }
 }

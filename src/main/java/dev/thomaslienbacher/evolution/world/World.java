@@ -12,7 +12,7 @@ import java.util.Collections;
 public class World {
 
     public static final int WIDTH = 80, HEIGHT = 80;
-    public static final int NUM_FOOD = 80;
+    public static final int NUM_FOOD = 50;
 
     private ArrayList<Robot> robots;
     private byte[][] originalFood;
