@@ -6,21 +6,20 @@ import java.util.Arrays;
 import java.util.Locale;
 
 public class Robot implements Comparable<Robot> {
-    public static final int MAX_MOVES = 20;
-    public static final int MIN_MOVES = 3;
+    public static final int MAX_MOVES = 50;
+    public static final int MIN_MOVES = 1;
     public static final double START_ENERGY = 20;
     public static final double GAIN_FOOD = 5;
-    public static final double SCAN_COST = 1;
-    public static final double MOVE_COST = 0.2;
-    public static final double MOVE_MUTABILITY = 0.6;
-    public static final double DIRECTION_MUTABILITY = 0.6;
+    public static final double SCAN_COST = 1.5;
+    public static final double MOVE_COST = 0.01;
+    public static final double LEN_MUTABILITY = 0.5;
+    public static final int MAX_MUTATIONS = MAX_MOVES - MIN_MOVES;
     public static final int NUM_DIRECTIONS = 7;
 
     private static int idCounter = 0;
-
+    public int x, y;
     private int id;
     private int generation;
-    public int x, y;
     private int fitness;
     private double energy;
     private byte[] moves; //clockwise 0-7
@@ -34,7 +33,7 @@ public class Robot implements Comparable<Robot> {
         reset();
         this.moves = new byte[Utils.randIntIncl(MIN_MOVES, MAX_MOVES)];
 
-        for(int i = 0; i < this.moves.length; i++) {
+        for (int i = 0; i < this.moves.length; i++) {
             this.moves[i] = (byte) Utils.randIntIncl(0, NUM_DIRECTIONS);
         }
     }
@@ -48,8 +47,8 @@ public class Robot implements Comparable<Robot> {
     }
 
     public void tick(World world) {
-        if(state < moves.length) {
-            switch(moves[state]) {
+        if (state < moves.length) {
+            switch (moves[state]) {
                 case 0: {
                     y++;
                     break;
@@ -95,9 +94,9 @@ public class Robot implements Comparable<Robot> {
             energy -= MOVE_COST;
             state++;
         } else {
-            for(int y = -1; y <= 1; y++) {
-                for(int x = -1; x <= 1; x++) {
-                    if(world.getFood(this.x + x, this.y + y) > 0) {
+            for (int y = -1; y <= 1; y++) {
+                for (int x = -1; x <= 1; x++) {
+                    if (world.getFood(this.x + x, this.y + y) > 0) {
                         fitness++;
                         energy += GAIN_FOOD;
                         world.setFood(this.x + x, this.y + y, (byte) 0);
@@ -115,26 +114,26 @@ public class Robot implements Comparable<Robot> {
         r.moves = moves.clone();
         r.generation = generation + 1;
 
-        if(Math.random() < MOVE_MUTABILITY) {
-            byte[] mut;
+        for (int i = 0; i < Math.max(r.moves.length, Utils.randInt(MAX_MUTATIONS)); i++) {
+            if (Math.random() < LEN_MUTABILITY / (double) MAX_MUTATIONS) {
+                byte[] mut;
+                i++;
 
-            boolean canIncrease = r.moves.length < MAX_MOVES;
-            boolean canDecrease = r.moves.length > MIN_MOVES;
+                boolean canIncrease = r.moves.length < MAX_MOVES;
+                boolean canDecrease = r.moves.length > MIN_MOVES;
 
-            if (Math.random() <= 0.5 && canIncrease) {
-                mut = new byte[r.moves.length + 1];
-                System.arraycopy(r.moves, 0, mut, 0, r.moves.length);
-                mut[r.moves.length] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
-                r.moves = mut;
+                if (Math.random() <= 0.5 && canIncrease) {
+                    mut = new byte[r.moves.length + 1];
+                    System.arraycopy(r.moves, 0, mut, 0, r.moves.length);
+                    mut[r.moves.length] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
+                    r.moves = mut;
+                } else if (canDecrease) {
+                    mut = new byte[r.moves.length - 1];
+                    System.arraycopy(r.moves, 0, mut, 0, r.moves.length - 1);
+                    r.moves = mut;
+                }
             }
-            else if(canDecrease) {
-                mut = new byte[r.moves.length - 1];
-                System.arraycopy(r.moves, 0, mut, 0, r.moves.length - 1);
-                r.moves = mut;
-            }
-        }
 
-        if(Math.random() < DIRECTION_MUTABILITY) {
             int pos = Utils.randInt(r.moves.length);
             r.moves[pos] = (byte) Utils.randIntIncl(NUM_DIRECTIONS);
         }
@@ -175,8 +174,33 @@ public class Robot implements Comparable<Robot> {
                 '}';
     }
 
+    public String toStringData() {
+        return "Robot{" +
+                "gen=" + generation +
+                ", id=" + id +
+                ", moves=" + Arrays.toString(moves) +
+                '}';
+    }
+
+    public int getFitness() {
+        return fitness;
+    }
+
     @Override
     public int compareTo(Robot o) {
-        return o.fitness - this.fitness;
+        return Integer.compare(o.fitness, this.fitness);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Robot robot = (Robot) o;
+        return Arrays.equals(moves, robot.moves);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(moves);
     }
 }

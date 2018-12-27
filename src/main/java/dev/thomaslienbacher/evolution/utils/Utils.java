@@ -12,7 +12,6 @@ public class Utils {
         return (int) Math.floor(Math.random() * (max - min)) + min;
     }
 
-    //TODO: test if starts at zero
     public static int randIntIncl(int max) {
         return (int) Math.floor(Math.random() * (max + 1));
     }
