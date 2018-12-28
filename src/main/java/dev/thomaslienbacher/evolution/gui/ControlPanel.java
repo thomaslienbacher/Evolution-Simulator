@@ -44,7 +44,7 @@ public class ControlPanel {
         );
 
         btnInstantGen.addActionListener((e) -> {
-            for(int i = 0; i < (int) spnAmountInst.getValue(); i++) {
+            for (int i = 0; i < (int) spnAmountInst.getValue(); i++) {
                 simulator.finishGeneration();
             }
         });
@@ -76,7 +76,7 @@ public class ControlPanel {
         StyledDocument doc = tpInfo.getStyledDocument();
         try {
             doc.remove(0, doc.getLength());
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

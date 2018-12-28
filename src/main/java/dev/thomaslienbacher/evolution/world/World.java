@@ -12,7 +12,7 @@ import java.util.Collections;
 public class World {
 
     public static final int WIDTH = 80, HEIGHT = 80;
-    public static final int NUM_FOOD = 50;
+    public static final int NUM_FOOD = 120;
 
     private ArrayList<Robot> robots;
     private byte[][] originalFood;
@@ -84,11 +84,10 @@ public class World {
             g.setColor(Color.BLUE);
             g.fill(new Ellipse2D.Float(a.x * CanvasPanel.BOX_W, a.y * CanvasPanel.BOX_H, CanvasPanel.BOX_W, CanvasPanel.BOX_H));
 
-            if (a.isScanning()) {
-                g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
-                g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
-                        CanvasPanel.BOX_W, CanvasPanel.BOX_H));
-            }
+            g.setColor(new Color(0.1f, 0.1f, 0.3f, 0.4f));
+            g.fill(new RoundRectangle2D.Float((a.x - 1) * CanvasPanel.BOX_W, (a.y - 1) * CanvasPanel.BOX_H, CanvasPanel.BOX_W * 3, CanvasPanel.BOX_H * 3,
+                    CanvasPanel.BOX_W, CanvasPanel.BOX_H));
+
         }
     }
 

@@ -14,8 +14,8 @@ import java.util.function.Function;
 
 public class Simulator {
 
-    public static final int NUM_ANIMALS = 20_000;
-    public static final double PERCENT_KILL = 0.5;
+    public static final int NUM_ANIMALS = 1_000;
+    public static final double PERCENT_KILL = 0.6;
     private State state;
     private World world;
     private Gui gui;
@@ -90,7 +90,7 @@ public class Simulator {
     }
 
     public void stopRunning() {
-        if(runThread == null) return;
+        if (runThread == null) return;
 
         if (runThread.isAlive()) {
             runThread.interrupt();
@@ -120,8 +120,8 @@ public class Simulator {
     }
 
     public void infiniteSimulation() {
-        if(state != State.SIMULATING) return;
-        int lastFitness = 0;
+        if (state != State.SIMULATING) return;
+        Robot last = null;
 
         while (true) {
             if (!isSimulating()) {
@@ -138,11 +138,13 @@ public class Simulator {
             state = State.REPRODUCING;
             Robot r = world.getBestRobot();
 
-            if (r.getFitness() > lastFitness) {
-                lastFitness = r.getFitness();
-                System.out.println("\n\nNew Fitness: " + r.toStringSmall());
+            if (last == null || last.compareTo(r) == 1) {
+                last = r;
+                System.out.println("\rNew Best at " + cycle + " : " + r.toStringHash());
+                System.out.print("Cycle: " + cycle);
+            } else {
+                System.out.print("\rCycle: " + cycle);
             }
-            System.out.print("\rCycle: " + cycle + " Current Best: " + r.toStringHash() + "             ");
         }
     }
 
