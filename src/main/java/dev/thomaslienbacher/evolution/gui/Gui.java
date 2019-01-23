@@ -23,7 +23,7 @@ public class Gui {
         pnlCanvas = new CanvasPanel(simulator);
         pnlControl = new ControlPanel(simulator);
 
-        frame = new JFrame("Evolution Simulator");
+        frame = new JFrame("Evolution Simulator - Thomas Lienbacher");
         frame.setLayout(new GridBagLayout());
         frame.add(pnlCanvas, 0);
         frame.add(pnlControl.$$$getRootComponent$$$(), 1);
