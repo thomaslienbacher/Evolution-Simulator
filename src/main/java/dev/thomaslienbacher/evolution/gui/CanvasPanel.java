@@ -38,8 +38,7 @@ public class CanvasPanel extends JPanel {
 
         if (simulator.isSimulating()) {
             simulator.renderWorld(g);
-        }
-        else {
+        } else {
             String s = "State: " + simulator.stateName();
             g.setFont(canvasFont);
             int width = g.getFontMetrics().stringWidth(s);

@@ -63,9 +63,12 @@ public class ControlPanel {
             System.runFinalization();
         });
 
-        btnInfinteRun.addActionListener((e) ->
-                simulator.infiniteSimulation()
-        );
+        btnInfinteRun.addActionListener((e) -> {
+            JOptionPane.showMessageDialog(null, "Information will be printed to stdout", "Notice", JOptionPane.INFORMATION_MESSAGE);
+            Thread t = new Thread(() -> simulator.infiniteSimulation());
+            t.setName("Infinte-Simulation-Thread");
+            t.start();
+        });
 
         spnRunSpeed.setValue(10);
         spnAmountInst.setValue(1);
@@ -159,7 +162,7 @@ public class ControlPanel {
         btnShowRobots.setText("Show Robots");
         panel3.add(btnShowRobots);
         btnInfinteRun = new JButton();
-        btnInfinteRun.setText("Run until Kill");
+        btnInfinteRun.setText("Run forever");
         panel3.add(btnInfinteRun);
     }
 

@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
+//TODO: implement a system to notify the user if they aren't in the correct state, eg. ticking before the simulation has started
 public class Simulator {
 
     public static final int NUM_ANIMALS = 1_000;
@@ -185,10 +186,6 @@ public class Simulator {
         state = State.SIMULATING;
         showRobotsSorted(Robot::toStringData);
         gui.repaintWorld();
-    }
-
-    public boolean isReady() {
-        return state != State.INIT;
     }
 
     public boolean isSimulating() {

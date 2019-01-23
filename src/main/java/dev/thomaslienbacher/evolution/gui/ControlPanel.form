@@ -134,7 +134,7 @@
           <component id="a3036" class="javax.swing.JButton" binding="btnInfinteRun">
             <constraints/>
             <properties>
-              <text value="Run until Kill"/>
+              <text value="Run forever"/>
             </properties>
           </component>
         </children>

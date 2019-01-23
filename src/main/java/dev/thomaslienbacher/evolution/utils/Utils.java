@@ -34,7 +34,7 @@ public class Utils {
     public static byte[][] copy2dArray(byte[][] src) {
         byte[][] dest = src.clone();
 
-        for(int i = 0; i < src.length; i++) {
+        for (int i = 0; i < src.length; i++) {
             dest[i] = Arrays.copyOf(src[i], src[i].length);
         }
 

@@ -16,7 +16,7 @@ public class Gui {
     public Gui(Simulator simulator) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -43,7 +43,7 @@ public class Gui {
         StyledDocument doc = pnlControl.getFreshDocument();
         try {
             doc.insertString(0, info, null);
-        } catch(BadLocationException e) {
+        } catch (BadLocationException e) {
             e.printStackTrace();
         }
     }
